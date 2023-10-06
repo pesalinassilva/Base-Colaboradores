@@ -1,5 +1,5 @@
 const Listado = ({colaboradores}) => {
-    console.log('Listado', colaboradores)
+    
     return (
         <>
             <table className="table">

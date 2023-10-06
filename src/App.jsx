@@ -9,6 +9,7 @@ import Titulo from "./components/Titulo"
 function App() {
   const [listaColaboradores, setListaColaboradores] = useState(BaseColaboradores)
   const [listaFiltrada, setListaFiltrada] = useState(BaseColaboradores)
+  const [busqueda, setBusqueda] = useState('')
   const [mensaje, setMensaje] = useState({
     msg: '',
     color: '',
@@ -22,20 +23,27 @@ function App() {
     setMensaje(mensajeValidacion)
   }
 
-  const resultadoBusqueda = (nuevaLista) => {
-    setListaFiltrada(nuevaLista)
-  }
-
+  const aplicarBusqueda = listaColaboradores.filter((colaborador) => {
+    return (
+        colaborador.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+        colaborador.correo.toLowerCase().includes(busqueda.toLowerCase()) ||
+        colaborador.edad.includes(busqueda.toString()) ||
+        colaborador.cargo.toLowerCase().includes(busqueda.toLowerCase()) ||
+        colaborador.telefono.toString().includes(busqueda)
+        )
+  })
+  
+  console.log(busqueda)
   return (
     <>
       <div className="row justify-content-start mt-3">
         <div className="col-8">
           <Titulo />
           <Buscador
-            resultado={resultadoBusqueda}
-            listaActual={listaColaboradores}
+            busqueda={busqueda}
+            setBusqueda={setBusqueda}
           />
-          <Listado colaboradores={listaFiltrada}/>
+          <Listado colaboradores={aplicarBusqueda}/>
         </div>
         <div className="col-4">
           <Formulario
