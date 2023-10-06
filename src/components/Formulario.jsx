@@ -22,7 +22,7 @@ const Formulario = ({colaboradores,validacion}) => {
         if (nuevoColaborador.nombre == '' || nuevoColaborador.correo == '' || nuevoColaborador.edad == '' || nuevoColaborador.cargo == '' || nuevoColaborador.telefono == ''){
             validacion({
                 msg:'Debe rellenar todos los campos',
-                color:'danger'
+                color:'warning'
             })
             return
         }else if (nuevoColaborador.nombre !== '' && nuevoColaborador.correo !== '' && nuevoColaborador.edad !== '' && nuevoColaborador.cargo !== '' && nuevoColaborador.telefono !== ''){
