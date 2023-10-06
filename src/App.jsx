@@ -43,8 +43,8 @@ function App() {
   
   return (
     <>
-      <div className="container-fluid row justify-content-start mt-3">
-        <div className="col-xs-1 col-sm-8 col-md-8">
+      <div className="container-fluid d-flex gap-4 justify-content-start mt-3 flex-wrap" style={{maxWidth: "80rem"}}>
+        <div className="flex-grow-1">
           <Titulo />
           <Buscador
             busqueda={busqueda}
@@ -55,7 +55,7 @@ function App() {
             enviarId={guardarId}  
           />
         </div>
-        <div className="col-xs-1 col-sm-4 col-md-4">
+        <div>
           <Formulario
             colaboradores={agregarColaboradores}
             validacion={mostrarValidacion}
