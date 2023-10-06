@@ -8,7 +8,6 @@ import Titulo from "./components/Titulo"
 
 function App() {
   const [listaColaboradores, setListaColaboradores] = useState(BaseColaboradores)
-  const [listaFiltrada, setListaFiltrada] = useState(BaseColaboradores)
   const [busqueda, setBusqueda] = useState('')
   const [mensaje, setMensaje] = useState({
     msg: '',
@@ -29,15 +28,14 @@ function App() {
         colaborador.correo.toLowerCase().includes(busqueda.toLowerCase()) ||
         colaborador.edad.includes(busqueda.toString()) ||
         colaborador.cargo.toLowerCase().includes(busqueda.toLowerCase()) ||
-        colaborador.telefono.toString().includes(busqueda)
+        colaborador.telefono.includes(busqueda.toString())
         )
   })
   
-  console.log(busqueda)
   return (
     <>
-      <div className="row justify-content-start mt-3">
-        <div className="col-8">
+      <div className="container-fluid row justify-content-start mt-3">
+        <div className="col-xs-1 col-sm-8 col-md-8">
           <Titulo />
           <Buscador
             busqueda={busqueda}
@@ -45,7 +43,7 @@ function App() {
           />
           <Listado colaboradores={aplicarBusqueda}/>
         </div>
-        <div className="col-4">
+        <div className="col-xs-1 col-sm-4 col-md-4">
           <Formulario
             colaboradores={agregarColaboradores}
             validacion={mostrarValidacion}
