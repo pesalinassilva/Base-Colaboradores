@@ -1,4 +1,4 @@
-const Listado = ({colaboradores}) => {
+const Listado = ({colaboradores,enviarId}) => {
     
     return (
         <>
@@ -10,16 +10,18 @@ const Listado = ({colaboradores}) => {
                     <th scope="col">Edad</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Telefono</th>
+                    <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {colaboradores.map(colaborador => 
+                    {colaboradores.map(colaborador =>
                         <tr key={colaborador.id}>
                             <td>{colaborador.nombre}</td>
                             <td>{colaborador.correo}</td>
                             <td>{colaborador.edad}</td>
                             <td>{colaborador.cargo}</td>
                             <td>{colaborador.telefono}</td>
+                            <td onClick={()=> {enviarId(colaborador.id)}}>🗑️</td>
                         </tr>
                     )}
                 </tbody>

@@ -13,6 +13,8 @@ function App() {
     msg: '',
     color: '',
   })
+
+  //const [id, setId] = useState('')
   
   const agregarColaboradores = (nuevoColaborador) => {
     setListaColaboradores([...listaColaboradores, nuevoColaborador])
@@ -22,6 +24,13 @@ function App() {
     setMensaje(mensajeValidacion)
   }
 
+  const guardarId = (colaboradorId) => {
+    const nuevaLista = listaColaboradores.filter(colaborador => colaborador.id != colaboradorId)
+    //const nuevaLista = listaColaboradores.splice(indice,1)
+    setListaColaboradores(nuevaLista)
+    //console.log(listaColaboradores)
+  }
+  
   const aplicarBusqueda = listaColaboradores.filter((colaborador) => {
     return (
         colaborador.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
@@ -41,7 +50,10 @@ function App() {
             busqueda={busqueda}
             setBusqueda={setBusqueda}
           />
-          <Listado colaboradores={aplicarBusqueda}/>
+          <Listado 
+            colaboradores={aplicarBusqueda}
+            enviarId={guardarId}  
+          />
         </div>
         <div className="col-xs-1 col-sm-4 col-md-4">
           <Formulario
