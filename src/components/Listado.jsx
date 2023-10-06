@@ -21,7 +21,9 @@ const Listado = ({colaboradores,enviarId}) => {
                             <td>{colaborador.edad}</td>
                             <td>{colaborador.cargo}</td>
                             <td>{colaborador.telefono}</td>
-                            <td onClick={()=> {enviarId(colaborador.id)}}>🗑️</td>
+                            <td className="text-center">
+                                <button className="btn btn-light" onClick={()=> {enviarId(colaborador.id)}}>🗑️</button>
+                            </td>
                         </tr>
                     )}
                 </tbody>
